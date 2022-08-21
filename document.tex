@@ -11,6 +11,20 @@
 
 \usepackage[all]{genealogytree}
 \usepackage{adjustbox}
+\usepackage{tcolorbox}
+
+% david --- lime
+% oleg --- violet
+% ryazanmurom --- cyan
+% izyaslaw --- olive
+% starodub --- green
+% smolensk --- lightgray
+% rostovbelozersk --- teal
+% suzdal --- blue
+% tver --- brown
+% paleolog --- orange
+% kambilla --- pink
+% polovetsk --- purple
 
 \begin{document}
 \pagestyle{empty}
@@ -21,21 +35,26 @@
 \begin{tikzpicture}
 	\gtrset{template=signpost,
 		edges={anchoring=center},
+		saint/.style={box={colback=yellow,no shadow,fuzzy halo}},
+		mainfull/.style={pivot,box={colback=red!50, colframe=red}},
+		main/.style={box={colframe=red}},
+		box={colback=white,boxrule=4pt},
 	}
+
 	\genealogytree[id suffix=@p]{
-		child{
-			g{Рюрик}
+		child[subtree box={colframe=red}]{
+			g[mainfull]{Рюрик}
 			child{
-				g{Игорь}
-				p{Ольга}
+				g[mainfull]{Игорь}
+				p[saint, main]{Ольга}
 				child{
-					g{Святослав}
+					g[mainfull]{Святослав}
 					child{
-						g{Владимир Великий}
+						g[saint, mainfull]{Владимир Великий}
 						child{
-							g{Изяслав}
-							child{
-								g{Брячеслав (Полоцк)}
+							g[box={colback=purple!50}]{Изяслав}
+							child[subtree box={colframe=purple}]{
+								g{Брячеслав \\(Полоцк)}
 								child{
 									g{Всеслав}
 									child{
@@ -51,18 +70,18 @@
 							}
 						}
 						child{
-							g{Ярослав}
+							g[mainfull]{Ярослав}
 							child{
-								g{Всеволод}
+								g[mainfull]{Всеволод}
 								child{
-									g{Владимир Всеволодович Манамах}
+									g[mainfull]{Владимир Всеволодович Манамах}
 									child{
-										g{Смоленский Мстислав}
-										child{
-											g{Всеволод}
+										g[box={colback=lightgray!50}]{Смоленский Мстислав}
+										child[subtree box={colframe=lightgray}]{
+											g[saint]{Всеволод}
 											c{Иван}
 										}
-										child{
+										child[subtree box={colframe=lightgray}]{
 											g{Изяслав}
 											c{Ярополк}
 											c{Владимир}
@@ -82,7 +101,7 @@
 												c{Святослав}
 											}
 										}
-										child{
+										child[subtree box={colframe=lightgray}]{
 											g{Смоленский Ростислав}
 											c{Бердладник Иванко}
 											child{
@@ -149,9 +168,9 @@
 															c{Юрий}
 														}
 														child{
-															g{Феодор}
+															g[saint]{Феодор}
 															child{
-																g{Давыд}
+																g[saint]{Давыд}
 																child{
 																	g{Василий}
 																	child{
@@ -166,7 +185,7 @@
 																	c{Роман}
 																}
 															}
-															c{Константин}
+															c[saint]{Константин}
 														}
 													}
 												}
@@ -179,8 +198,8 @@
 											}
 											c{Ярополк}
 										}
-										c{Святополк}
-										child{
+										c[box={colframe=lightgray}]{Святополк}
+										child[subtree box={colframe=lightgray}]{
 											g{Владимир}
 											child{
 												g{Ярослав}
@@ -188,7 +207,7 @@
 												c{Ростислав}
 											}	
 										}
-										c{Ярослав}
+										c[box={colframe=lightgray}]{Ярослав}
 									}
 									c{Изяслав}
 									child{
@@ -202,7 +221,7 @@
 									c{Вячеслав}
 									c{Роман}
 									child{
-										g{Юрий Владимирович Долгорукий}
+										g[mainfull]{Юрий Владимирович Долгорукий}
 										c{Иванко}
 										child{
 											g{Ростислав}
@@ -236,13 +255,13 @@
 										c{Михалко}
 										c{Святослав}
 										child{
-											g{Всеволод Юрьевич}
+											g[mainfull]{Всеволод Юрьевич}
 											c{Владимир}
 											child{
 												g{Константин}
 												child{
-													g{Василий}
-													child{
+													g[saint, box={colback=teal!50}]{Василий}
+													child[subtree box={colframe=teal}]{
 														g{Глеб}
 														child{
 															g{Михаил}
@@ -262,7 +281,7 @@
 															}
 														}
 													}
-													child{
+													child[subtree box={colframe=teal}]{
 														g{Борис}
 														child{
 															g{Дмитрий}
@@ -307,13 +326,13 @@
 											c{Дмитрий}
 											c{Гавриил}
 											child{
-												g{Ярослав Всеволодович}
+												g[mainfull]{Ярослав Всеволодович}
 												c{Феодор}
 												child{
-													g{Александр Ярославович Невский}
+													g[saint, mainfull]{Александр Ярославович Невский}
 													c{Василий}
 													child{
-														g{Дмитрий}
+														g[saint]{Дмитрий}
 														c{Александр}
 														c{Иван}
 														c{Иван}
@@ -324,12 +343,12 @@
 														c{Михаил}
 													}
 													child{
-														g{Данило Александрович}
+														g[mainfull]{Данило Александрович}
 														c{Юрий}
 														c{Александр}
 														c{Борис}
 														child{
-															g{Иван Данилович Калита}	
+															g[mainfull]{Иван Данилович Калита}	
 															child{
 																g{Семен}
 																c{Василий}
@@ -341,42 +360,42 @@
 															}
 															c{Данила}
 															child{
-																g{Иван Иванович}
+																g[mainfull]{Иван Иванович}
 																child{
-																	g{Донской Дмитрий Иванович}
-																	p[id=Evdokia]{Евдокия}
+																	g[saint, mainfull]{Донской Дмитрий Иванович}
+																	p[id=Evdokia, box={colframe=blue, colback=blue!50}]{Евдокия}
 																	child{
-																		g{Василий Дмитриевич}
-																		c{Анна (жена Ивана Колуяна)}
+																		g[mainfull]{Василий Дмитриевич}
+																		c{Анна \\(жена Ивана Колуяна)}
 																		c{Юрий}
 																		child{
-																			g{Василий Васильевич}
+																			g[mainfull]{Василий Васильевич}
 																			c{Юрий}
 																			child{
-																				g{Иван~III Васильевич}
-																				p{Мария Борисовна}
+																				g[mainfull]{Иван~III Васильевич}
+																				p[box={colback=brown!50, colframe=brown}]{Мария Борисовна}
 																				child{
 																					g{Иван Иванович}
 																					c{Дмитрий Иванович}
 																				}
 																				union{
-																					p[id=Sophia]{Софья Палеолог}
+																					p[id=Sophia, box={colback=orange!50, colframe=orange}]{Софья Палеолог}
 																					child{
-																						g{Василий Иванович}
+																						g[mainfull]{Василий Иванович}
 																						child{
-																							g{Царь Иван~IV Васильевич}
-																							p[id=Anastasia]{Анастасия Романова}
+																							g[mainfull]{Царь Иван~IV Васильевич}
+																							p[id=Anastasia, box={colback=pink!50, colframe=pink}]{Анастасия Романова}
 																							c{Дмитрий}
 																							c{Иван}
 																							child{
-																								g{Царь Феодор}
+																								g[mainfull]{Царь Феодор}
 																								p[id=Irina]{Ирина \\ (жена Феодора)}
 																							}
 																							c[phantom]{}
 																							union{
-																								p{Мария Нагая}
+																								p[box={colframe=black}]{Мария Нагая}
 																								child{
-																									g{Царь Дмитрий}
+																									g[mainfull]{Царь Дмитрий}
 																									c{Иван (повешен по~указанию правительства)}
 																								}
 																							}
@@ -464,9 +483,9 @@
 													}
 												}
 												child{
-													g{Андрей}
-													c{Юрий}
-													child{
+													g[box={colback=blue!50}]{Андрей}
+													c[box={colframe=blue}]{Юрий}
+													child[subtree box={colframe=blue}]{
 														g{Михаил}
 														child{
 															g{Василий}
@@ -515,7 +534,7 @@
 																		}
 																	}
 																	c{Иван}
-																	c[id=Evdokia]{Евдокия}
+																	c[id=Evdokia, saint]{Евдокия}
 																}
 																c{Андрей}
 																child{
@@ -541,10 +560,10 @@
 												c{Даниил}
 												c{Хоробрит Михаил}
 												child{
-													g{Ярослав}
-													c{Святослав}
-													child{
-														g{Михаил}
+													g[box={colback=brown!50}]{Ярослав}
+													c[box={colframe=brown}]{Святослав}
+													child[subtree box={colframe=brown}]{
+														g[saint]{Михаил}
 														c{Дмитрий}
 														child{
 															g{Александр}
@@ -558,7 +577,7 @@
 															}
 															c{Лев}
 															child{
-																g{Михаил}
+																g[saint]{Михаил}
 																child{
 																	g{Иван}
 																	child{
@@ -615,8 +634,8 @@
 												c{Дмитрий}
 											}
 											child{
-												g{Иоанн}
-												child{
+												g[box={colback=green!50}]{Иоанн \\(Стародуб)}
+												child[subtree box={colframe=green}]{
 													g{Михаил}
 													child{
 														g{Иван}
@@ -647,9 +666,9 @@
 								}
 							}
 							child{
-								g{Изяслав}
-								c{Ярополк}
-								child{
+								g[box={colback=olive!50}]{Изяслав}
+								c[box={colframe=olive}]{Ярополк}
+								child[subtree box={colframe=olive}]{
 									g{Святополк}
 									child{
 										g{Ярославец}
@@ -672,16 +691,16 @@
 							}
 							child{
 								g{Святослав}
-								child{
-									g{Давыд}
+								child[subtree box={colframe=lime}]{
+									g[box={colback=lime!50}]{Давыд}
 									child{
 										g{Владимир}
 										c{Святослав}
 									}
 									c{Изяслав}
 								}
-								child{
-									g{Олег}
+								child[subtree box={colframe=violet}]{
+									g[box={colback=violet!50}]{Олег}
 									child{
 										g{Всеволод}
 										child{
@@ -704,7 +723,7 @@
 											child{
 												g{Чермный Всеволод}
 												child{
-													g{Черниговский Михаил}
+													g[saint]{Черниговский Михаил}
 													child{
 														g{Семен}
 														c{Роман}
@@ -756,8 +775,8 @@
 										c{Всеволод}
 									}
 								}
-								child{
-									g{Ярослав}
+								child[subtree box={colframe=cyan}]{
+									g[box={colback=cyan!50}]{Ярослав}
 									child{
 										g{Ростислав}
 										child{
@@ -774,7 +793,7 @@
 													child{
 														g{Олег}
 														child{
-															g{Роман}
+															g[saint]{Роман}
 															c{Феодор}
 															child{
 																g{Ярослав}
@@ -866,8 +885,8 @@
 							}
 							c{Владимир}
 						}
-						c{Борис}
-						c{Глеб}
+						c[saint]{Борис}
+						c[saint]{Глеб}
 						c{Мстислав}
 					}
 				}
@@ -883,8 +902,8 @@
 		}
 	}
 
-	\genealogytree[id suffix=@n, adjust node=Sophia@n left of Sophia@p distance 15cm]{
-		child{
+	\genealogytree[id suffix=@n, adjust node=Sophia@n left of Sophia@p distance 16.25cm]{
+		child[subtree box={colframe=orange, colback=orange!50}]{
 			g{Иван Палеолог Царь}
 			child{
 				g{Мануил Царь}
@@ -901,37 +920,37 @@
 		}
 	}
 
-	\genealogytree[id suffix=@g, adjust node=Anastasia@g left of Anastasia@p distance 20cm]{
-	child{
-		g{Камбилла Гланда Дивонович (Иван)}
-		child{
-			g{Андрей Кобыла}
+	\genealogytree[id suffix=@g, adjust node=Anastasia@g left of Anastasia@p distance 22cm]{
+		child[subtree box={colframe=pink, colback=pink!50}]{
+			g{Камбилла Гланда Дивонович (Иван)}
 			child{
-				g{Феодор Кошка}
+				g{Андрей Кобыла}
 				child{
-					g{Иван}
+					g{Феодор Кошка}
 					child{
-						g{Захарий Кошкин}
+						g{Иван}
 						child{
-							g{Юрий}
+							g{Захарий Кошкин}
 							child{
-								g{Роман}
-								c[id=Anastasia]{Анастасия Романова (жена Ивана~IV Васильевича)}
+								g{Юрий}
 								child{
-									g{Никита}
+									g{Роман}
+									c[id=Anastasia]{Анастасия Романова \\(жена Ивана~IV Васильевича)}
 									child{
-										g{Феодор (Филарет)}
-										c{Михаил Феодорович Романов Царь}
+										g{Никита}
+										child{
+											g{Феодор (Филарет)}
+											c{Михаил Феодорович Романов Царь}
+										}
 									}
 								}
 							}
 						}
 					}
-				}
-			}	
+				}	
+			}
 		}
 	}
-}
 \end{tikzpicture}
 \end{adjustbox}
 \vspace*{\fill}
